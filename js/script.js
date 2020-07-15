@@ -1,22 +1,24 @@
-console.log("working");
 //gallery generate on load all images, adds id by position within images object
-	for (i=0; i<images.length; i++) {
-		document.getElementById('gallery').innerHTML 	
-	  +=   	'<div class="mb-3 pics animation all 2">'
-    + 		'<img onclick="similarfunction(this.id)" class="img-fluid test '+ images[i].keyword1 +'" id="'+[i]+'" src="'+ images[i].source +'" alt="Card image cap">'
-  	+ 		'</div>'
-  };
+for (i=0; i<images.length; i++) {
+	document.getElementById('gallery').innerHTML 	
+	+=   	'<div class="mb-3 pics animation all 2">'
+  + 		'<img onclick="similarfunction(this.id)" class="img-fluid test '+ images[i].keyword1 +'" id="'+[i]+'" src="'+ images[i].source +'" alt="Card image cap">'
+  + 		'</div>'
+};
 	
-  // function included as onclick function within html when images are pasted
+// function included as onclick function within html when images are pasted
 
-  function similarfunction(clicked_id)
-  {
+function similarfunction(clicked_id){
 
-  //show individual image modal and remove old content, disable scroll on bg content
- 
-  document.getElementById('imageModal').innerHTML = '';
-  document.getElementById('imageModal').style.display="block";  
-  document.getElementById('body').style.overflow="hidden";
+//show individual image modal and remove old content, disable scroll on bg content
+  
+  $('#imageModal',).html('');
+  $('#imageModal',).css({
+    "display" : "block",
+  });
+  $('#body',).css({
+    "overflow" : "hidden",
+  });
   document.getElementById('imageModal').innerHTML 
 
   //paste clicked element as image as well as keywords and modal background, also sets up div for related images to be placed in
@@ -53,44 +55,48 @@ console.log("working");
 
   //loop through images object to find matches
 
-    for (i=0; i<images.length; i++){
+      for (i=0; i<images.length; i++){
 
   //set variables as keywords
 
-    keyArray1 = images[i].keyword1;
-    keyArrayTitle = images[i].title;
+      keyArray1 = images[i].keyword1;
+      keyArrayTitle = images[i].title;
 
   //check for objects within images that have matching keywords
 
-    if ((keyArray1 === keyClicked1) && (keyArrayTitle != images[clicked_id].title)) {
+      if ((keyArray1 === keyClicked1) && (keyArrayTitle != images[clicked_id].title)) {
+        document.getElementById('relatedImagesBox').innerHTML 
 
-    document.getElementById('relatedImagesBox').innerHTML 
+      //paste each match in as image
 
-  //paste each match in as image
+        +='<img class="secondGalleryImg" src="'+ images[i].source +'">'
+      } 
+}
 
-    +='<img class="secondGalleryImg" src="'+ images[i].source +'">'
-  } 
+//end of similarFunctions()
+
+
+//set close modal on click, enable scroll on body
+    
+$( '#imageModal' ).click(function() {
+  $('#imageModal',).css({
+    "display" : "none",
+  });
+  $('#body',).css({
+    "overflow" : "scroll",
+  });
+  });
 }
 
 
-  //set close modal on click, enable scroll on body
-    
-    document.getElementById('imageModal').addEventListener('click', function(){
-  	document.getElementById('imageModal').style.display="none";
-    document.getElementById('body').style.overflow="scroll";
-
-  });
-  }
-
-
-  //generate menu from keywords array and set each keyword as its own id
-    for (k=0; k<keywords.length; k++) {
-    document.getElementById('keyWordList').innerHTML 
+//generate menu from keywords array and set each keyword as its own id
+for (k=0; k<keywords.length; k++) {
+  document.getElementById('keyWordList').innerHTML 
 
   //sets up new id for each keyword using the keyword
 
-    += '<div class="p-2 keywords" id="'+keywords[k]+'">'+ keywords[k] +'</div>'
-    }
+  += '<div class="p-2 keywords" id="'+keywords[k]+'">'+ keywords[k] +'</div>'
+}
 
 //create mouseover effect on generated menu
 
@@ -119,41 +125,46 @@ var key = ""
 
 for (s=0; s<keywords.length; s++) {
   key = keywords[s];
- document.getElementById(key).addEventListener('click', function(){
+  document.getElementById(key).addEventListener('click', function(){
   document.getElementById('gallery').innerHTML = ""; // clears body
     for (i=0; i<images.length; i++) {
-      if ((images[i].keyword1 === this.id)){
-    document.getElementById('gallery').innerHTML  
-  +=    '<div class="mb-3 pics animation all 2">'
-    +     '<img onclick="similarfunction(this.id)" class="img-fluid test '+ images[i].keyword1 +'" id="'+[i]+'" src="'+ images[i].source +'" alt="Card image cap">'
-    +     '</div>'
-}}
- });
+    if ((images[i].keyword1 === this.id)){
+      document.getElementById('gallery').innerHTML  
+      +=    '<div class="mb-3 pics animation all 2">'
+      +     '<img onclick="similarfunction(this.id)" class="img-fluid test '+ images[i].keyword1 +'" id="'+[i]+'" src="'+ images[i].source +'" alt="Card image cap">'
+      +     '</div>'
+    }}
+  });
 
 }
 
-
 //hide menu
 
-		document.getElementById('closeKeyWordBox').addEventListener('click', function(){
-			document.getElementById('keyWordBox').style.display = ('none');
-		});
+$( '#closeKeyWordBox' ).click(function() {
+  $('#keyWordBox',).css({
+    "display" : "none",
+  });
+});
 
-				document.getElementById('keyWordBox2').addEventListener('click', function(){
-			document.getElementById('keyWordBox').style.display = ('none');
-		});
-
-
+$( '#keyWordBox2' ).click(function() {
+  $('#keyWordBox',).css({
+    "display" : "none",
+  });
+});
 
 //show menu
-document.getElementById('keyWordSearch').addEventListener('click', function(){
 
-	document.getElementById('keyWordBox').style.display = ('block');
-
-
+$( '#keyWordSearch' ).click(function() {
+  $('#keyWordBox',).css({
+    "display" : "block",
+  });
 });
 
-document.getElementById('returnArrow').addEventListener('click',function(){
-  document.getElementById('titleLogo').scrollIntoView({ block: 'end',  behavior: 'smooth' });
+$( '#returnArrow' ).click(function() {
+  scrollToAnchor('pageTop')
 });
 
+function scrollToAnchor(aid){
+  var aTag = $("a[name='"+ aid +"']");
+  $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+}

@@ -98,6 +98,7 @@
 .hide {
 	display: none;
 }
+
 /*gallery*/
 
 .gallery {
@@ -115,7 +116,7 @@ transition: all 350ms ease; }
 -ms-transform: scale(1);
 transform: scale(1); }
 
-@media (max-width: 450px) {
+@media (max-width: 600px) {
 .gallery {
 -webkit-column-count: 1;
 -moz-column-count: 1;
