@@ -1,0 +1,189 @@
+* {
+	margin: 0rem;
+	padding: 0rem;
+}
+
+#imageModal {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	display: none;
+	z-index: 2;
+	overflow: scroll;
+	background-color: rgba(0,0,3,.9);
+	top: 0;
+}
+
+.imageModalBg {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+.imageModalBg p {
+	color: white;
+}
+
+.imageModalImage {
+	position: absolute;
+	width: 100%;
+}
+
+#gallery img:hover {
+	cursor: crosshair;
+	border-width: .2rem;
+	border-style: solid;
+	border-color: #E64C4C;
+}
+
+.imageModalImage img {
+	margin: 0 auto;
+	display: block;
+	width: 50%;
+}
+
+.imageModalImage p {
+	text-align: center;
+}
+
+#headerBox {
+	background-color: #B7B0D5;
+	height: 100%;
+}
+
+#menuBox {
+	/*background-color: white;*/
+	height: 100%;
+	margin: 0.2rem;
+}
+
+#logoBox {
+	/*background-color: orange;*/
+	height: 100%;
+	text-align: center;
+}
+
+#titleLogo {
+	max-width: 100%;
+	height: auto;
+	margin: 0.2rem;
+}
+
+#logoBox p {
+	margin-bottom: 0rem;
+	color: whitesmoke;
+}
+
+#menuBox p {
+	margin-bottom: 0rem;
+	color: whitesmoke;
+}
+
+.secondGallery {
+	width: 80%;
+	display: inline-block;
+}
+
+#relatedImagesBox {
+	width: 95%;
+	display: block;
+	margin: 0 auto;
+}
+
+#relatedImagesBox img {
+	width: 80%;
+	padding: 1rem;
+}
+
+.hide {
+	display: none;
+}
+/*gallery*/
+
+.gallery {
+-webkit-column-count: 2;
+-moz-column-count: 2;
+column-count: 2;
+-webkit-column-width: 50%;
+-moz-column-width: 50%;
+column-width: 50%; }
+.gallery .pics {
+-webkit-transition: all 350ms ease;
+transition: all 350ms ease; }
+.gallery .animation {
+-webkit-transform: scale(1);
+-ms-transform: scale(1);
+transform: scale(1); }
+
+@media (max-width: 450px) {
+.gallery {
+-webkit-column-count: 1;
+-moz-column-count: 1;
+column-count: 1;
+-webkit-column-width: 100%;
+-moz-column-width: 100%;
+column-width: 100%;
+}
+}
+
+#keyWordBox {
+	display: none;
+	height: 100%;
+	z-index: 2;
+	position: fixed;
+	top: 0;
+}
+
+#keyWordBox2 {
+	background-color: rgb(179,178,219, 0.9);
+	height: 100%;
+	position: fixed;
+	top: 0;
+	overflow-y:scroll;
+}
+
+#keyWordList {
+	height: 100%;
+}
+
+#keyWordList:hover {
+	cursor: crosshair;
+}
+
+.closeKeyWordBox {
+	font-size:48px;
+	color:white;
+}
+
+.keywords {
+	color: white;
+	margin: 0px;
+	padding: 0px;
+}
+
+#keyWordSearch {
+	margin-left: 1rem;
+}
+
+#keyWordSearch:hover {
+	color: #E64C4C;
+	cursor: crosshair;
+}
+
+#refreshLink:hover {
+	cursor: crosshair;
+}
+
+.returnIcon {
+	color: black;
+}
+
+.returnIcon:hover {
+	cursor: crosshair;
+}
+
+#returnArrow {
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+}
